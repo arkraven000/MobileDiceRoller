@@ -5,9 +5,9 @@
 > **All AI assistants and developers MUST follow this plan and keep the task status current.**
 
 **Last Updated**: 2025-11-08
-**Project Status**: Phase 1 Complete - Foundation & Setup
+**Project Status**: Phase 2 Complete - Domain Models with TDD
 **Target iOS Version**: iOS 16.0+
-**Completion**: 5 of 109 tasks (4.6%)
+**Completion**: 10 of 109 tasks (9.2%)
 
 ---
 
@@ -219,11 +219,11 @@ MobileDiceRoller/
 
 | # | Task | Status | Started | Completed | Notes |
 |---|------|--------|---------|-----------|-------|
-| 6 | Create protocol-oriented domain models following SRP | 🔲 pending | - | - | Use structs with value semantics |
-| 7 | Implement Weapon model with value semantics (struct) and protocols | 🔲 pending | - | - | Include all 40K stats |
-| 8 | Implement Defender model with value semantics and protocols | 🔲 pending | - | - | T, Save, Invuln, FNP, Wounds |
-| 9 | Create CombatResult model with immutable design | 🔲 pending | - | - | Expected values + probabilities |
-| 10 | Write unit tests for domain models (TDD approach, 80%+ coverage) | 🔲 pending | - | - | Test all properties |
+| 6 | Create protocol-oriented domain models following SRP | ✅ completed | 2025-11-08 | 2025-11-08 | WeaponAbility enum with 18+ abilities, Codable support |
+| 7 | Implement Weapon model with value semantics (struct) and protocols | ✅ completed | 2025-11-08 | 2025-11-08 | Full 40K stats, factory methods, CustomStringConvertible |
+| 8 | Implement Defender model with value semantics and protocols | ✅ completed | 2025-11-08 | 2025-11-08 | T, Save, Invuln, FNP, Wounds, computed properties |
+| 9 | Create CombatResult model with immutable design | ✅ completed | 2025-11-08 | 2025-11-08 | Immutable expected values, probabilities, efficiency calcs |
+| 10 | Write unit tests for domain models (TDD approach, 80%+ coverage) | ✅ completed | 2025-11-08 | 2025-11-08 | 100+ tests covering all models, edge cases, Codable |
 
 ### Phase 3: Probability Calculator Engine (7 tasks)
 
@@ -512,7 +512,7 @@ MobileDiceRoller/
 | Milestone | Target Date | Tasks | Status |
 |-----------|-------------|-------|--------|
 | Project Setup Complete | 2025-11-08 | 1-5 | ✅ Complete |
-| Domain Models Complete | TBD | 6-10 | Not Started |
+| Domain Models Complete | 2025-11-08 | 6-10 | ✅ Complete |
 | Probability Engine Complete | TBD | 11-17 | Not Started |
 | All Weapon Abilities Complete | TBD | 18-40 | Not Started |
 | Monte Carlo Simulation Complete | TBD | 41-49 | Not Started |
@@ -540,6 +540,7 @@ MobileDiceRoller/
 |------|--------|--------|
 | 2025-11-08 | Initial plan created with 109 tasks | Claude |
 | 2025-11-08 | Phase 1 complete: Foundation & Setup (5/109 tasks - 4.6%) | Claude |
+| 2025-11-08 | Phase 2 complete: Domain Models with TDD (10/109 tasks - 9.2%) | Claude |
 
 ---
 
