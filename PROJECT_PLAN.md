@@ -5,9 +5,9 @@
 > **All AI assistants and developers MUST follow this plan and keep the task status current.**
 
 **Last Updated**: 2025-11-08
-**Project Status**: Phase 1 Complete - Foundation & Setup
+**Project Status**: Phase 3 Complete - Probability Calculator Engine
 **Target iOS Version**: iOS 16.0+
-**Completion**: 5 of 109 tasks (4.6%)
+**Completion**: 17 of 109 tasks (15.6%)
 
 ---
 
@@ -219,23 +219,23 @@ MobileDiceRoller/
 
 | # | Task | Status | Started | Completed | Notes |
 |---|------|--------|---------|-----------|-------|
-| 6 | Create protocol-oriented domain models following SRP | 🔲 pending | - | - | Use structs with value semantics |
-| 7 | Implement Weapon model with value semantics (struct) and protocols | 🔲 pending | - | - | Include all 40K stats |
-| 8 | Implement Defender model with value semantics and protocols | 🔲 pending | - | - | T, Save, Invuln, FNP, Wounds |
-| 9 | Create CombatResult model with immutable design | 🔲 pending | - | - | Expected values + probabilities |
-| 10 | Write unit tests for domain models (TDD approach, 80%+ coverage) | 🔲 pending | - | - | Test all properties |
+| 6 | Create protocol-oriented domain models following SRP | ✅ completed | 2025-11-08 | 2025-11-08 | WeaponAbility enum with 18+ abilities, Codable support |
+| 7 | Implement Weapon model with value semantics (struct) and protocols | ✅ completed | 2025-11-08 | 2025-11-08 | Full 40K stats, factory methods, CustomStringConvertible |
+| 8 | Implement Defender model with value semantics and protocols | ✅ completed | 2025-11-08 | 2025-11-08 | T, Save, Invuln, FNP, Wounds, computed properties |
+| 9 | Create CombatResult model with immutable design | ✅ completed | 2025-11-08 | 2025-11-08 | Immutable expected values, probabilities, efficiency calcs |
+| 10 | Write unit tests for domain models (TDD approach, 80%+ coverage) | ✅ completed | 2025-11-08 | 2025-11-08 | 100+ tests covering all models, edge cases, Codable |
 
 ### Phase 3: Probability Calculator Engine (7 tasks)
 
 | # | Task | Status | Started | Completed | Notes |
 |---|------|--------|---------|-----------|-------|
-| 11 | Create ProbabilityCalculating protocol (ISP) | 🔲 pending | - | - | Interface segregation |
-| 12 | Implement ProbabilityEngine following SRP with injected dependencies | 🔲 pending | - | - | Hit/Wound/Save/Damage |
-| 13 | Write unit tests for hit roll calculations (TDD) | 🔲 pending | - | - | Test BS 2+ through 6+ |
-| 14 | Implement Strength vs Toughness matrix with lookup table optimization | 🔲 pending | - | - | All S vs T combinations |
-| 15 | Write unit tests for wound roll calculations (all S vs T combinations) | 🔲 pending | - | - | 36 combinations |
-| 16 | Implement armor save system with protocol-based design | 🔲 pending | - | - | AP, Invuln, FNP |
-| 17 | Write unit tests for save mechanics (armor, invuln, FNP) | 🔲 pending | - | - | Edge cases |
+| 11 | Create ProbabilityCalculating protocol (ISP) | ✅ completed | 2025-11-08 | 2025-11-08 | Protocol with 5 methods, default implementations, helper functions |
+| 12 | Implement ProbabilityEngine following SRP with injected dependencies | ✅ completed | 2025-11-08 | 2025-11-08 | Full combat calculations, damage parsing, kill probability |
+| 13 | Write unit tests for hit roll calculations (TDD) | ✅ completed | 2025-11-08 | 2025-11-08 | 7 tests covering BS 2+ through 6+, invalid skills |
+| 14 | Implement Strength vs Toughness matrix with lookup table optimization | ✅ completed | 2025-11-08 | 2025-11-08 | Pre-computed table for S1-20 vs T1-20, O(1) lookup |
+| 15 | Write unit tests for wound roll calculations (all S vs T combinations) | ✅ completed | 2025-11-08 | 2025-11-08 | 18 tests covering all 5 wound roll categories |
+| 16 | Implement armor save system with protocol-based design | ✅ completed | 2025-11-08 | 2025-11-08 | AP modifiers, invuln saves, FNP, auto-pass/fail logic |
+| 17 | Write unit tests for save mechanics (armor, invuln, FNP) | ✅ completed | 2025-11-08 | 2025-11-08 | 8 tests for saves, 3 tests for FNP, edge cases |
 
 ### Phase 4: Weapon Abilities - Protocol-Based (23 tasks)
 
@@ -512,8 +512,8 @@ MobileDiceRoller/
 | Milestone | Target Date | Tasks | Status |
 |-----------|-------------|-------|--------|
 | Project Setup Complete | 2025-11-08 | 1-5 | ✅ Complete |
-| Domain Models Complete | TBD | 6-10 | Not Started |
-| Probability Engine Complete | TBD | 11-17 | Not Started |
+| Domain Models Complete | 2025-11-08 | 6-10 | ✅ Complete |
+| Probability Engine Complete | 2025-11-08 | 11-17 | ✅ Complete |
 | All Weapon Abilities Complete | TBD | 18-40 | Not Started |
 | Monte Carlo Simulation Complete | TBD | 41-49 | Not Started |
 | Database & Repositories Complete | TBD | 50-61 | Not Started |
@@ -540,6 +540,8 @@ MobileDiceRoller/
 |------|--------|--------|
 | 2025-11-08 | Initial plan created with 109 tasks | Claude |
 | 2025-11-08 | Phase 1 complete: Foundation & Setup (5/109 tasks - 4.6%) | Claude |
+| 2025-11-08 | Phase 2 complete: Domain Models with TDD (10/109 tasks - 9.2%) | Claude |
+| 2025-11-08 | Phase 3 complete: Probability Calculator Engine (17/109 tasks - 15.6%) | Claude |
 
 ---
 

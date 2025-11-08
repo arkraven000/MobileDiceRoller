@@ -177,7 +177,6 @@ private struct KeychainManagerStub: KeychainManaging {
 // These protocols will be properly defined in their respective phases
 // For now, we provide minimal definitions to avoid compilation errors
 
-protocol ProbabilityCalculating {}
 protocol MonteCarloSimulating {}
 protocol StatisticalAnalyzing {}
 protocol AbilityProcessing {}
@@ -201,7 +200,6 @@ protocol KeychainManaging {
 }
 
 // Temporary stub implementations
-struct ProbabilityEngine: ProbabilityCalculating {}
 struct MonteCarloSimulator: MonteCarloSimulating {
     init(randomNumberGenerator: RandomNumberGenerator) {}
 }
@@ -210,10 +208,6 @@ struct SecureRandomNumberGenerator: RandomNumberGenerator {
 }
 struct StatisticalAnalyzer: StatisticalAnalyzing {}
 struct AbilityProcessor: AbilityProcessing {}
-
-// Temporary model stubs
-struct Weapon {}
-struct Defender {}
 
 // Temporary ViewModel stubs
 struct CalculatorViewModel {
