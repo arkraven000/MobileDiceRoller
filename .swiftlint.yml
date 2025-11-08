@@ -1,0 +1,285 @@
+# SwiftLint Configuration for Warhammer 40K Dice Calculator
+# Target: Zero warnings policy
+# Swift Version: 5.9+
+# Last Updated: 2025-11-08
+
+# Paths to include/exclude
+included:
+  - Sources
+  - Tests
+
+excluded:
+  - Pods
+  - .build
+  - DerivedData
+  - Package.swift
+  - .swiftpm
+
+# Analyzer Rules (require full builds)
+analyzer_rules:
+  - unused_declaration
+  - unused_import
+
+# Enabled Rules
+opt_in_rules:
+  # Performance
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
+  - contains_over_first_not_nil
+  - contains_over_range_nil_comparison
+  - empty_collection_literal
+  - empty_count
+  - first_where
+  - flatmap_over_map_reduce
+  - last_where
+  - reduce_into
+  - sorted_first_last
+
+  # Style
+  - attributes
+  - closure_end_indentation
+  - closure_spacing
+  - collection_alignment
+  - comma_inheritance
+  - conditional_returns_on_newline
+  - explicit_init
+  - explicit_self
+  - file_header
+  - implicit_return
+  - joined_default_parameter
+  - literal_expression_end_indentation
+  - modifier_order
+  - multiline_arguments
+  - multiline_function_chains
+  - multiline_literal_brackets
+  - multiline_parameters
+  - operator_usage_whitespace
+  - prefer_self_in_static_references
+  - prefer_self_type_over_type_of_self
+  - prefer_zero_over_explicit_init
+  - redundant_nil_coalescing
+  - redundant_type_annotation
+  - single_test_class
+  - sorted_imports
+  - toggle_bool
+  - trailing_closure
+  - unneeded_parentheses_in_closure_argument
+  - vertical_parameter_alignment_on_call
+  - vertical_whitespace_closing_braces
+  - vertical_whitespace_opening_braces
+  - yoda_condition
+
+  # Idiomatic
+  - anonymous_argument_in_multiline_closure
+  - convenience_type
+  - discouraged_none_name
+  - discouraged_object_literal
+  - discouraged_optional_boolean
+  - discouraged_optional_collection
+  - empty_string
+  - empty_xctest_method
+  - fallthrough
+  - fatal_error_message
+  - file_name
+  - file_name_no_space
+  - force_unwrapping
+  - function_default_parameter_at_end
+  - ibinspectable_in_extension
+  - identical_operands
+  - implicitly_unwrapped_optional
+  - let_var_whitespace
+  - lower_acl_than_parent
+  - missing_docs
+  - no_extension_access_modifier
+  - number_separator
+  - object_literal
+  - overridden_super_call
+  - override_in_extension
+  - pattern_matching_keywords
+  - prefer_nimble
+  - private_action
+  - private_outlet
+  - private_subject
+  - prohibited_super_call
+  - quick_discouraged_call
+  - quick_discouraged_focused_test
+  - quick_discouraged_pending_test
+  - redundant_objc_attribute
+  - required_enum_case
+  - static_operator
+  - strong_iboutlet
+  - test_case_accessibility
+  - unavailable_function
+  - unowned_variable_capture
+  - untyped_error_in_catch
+  - valid_ibinspectable
+  - weak_delegate
+  - xct_specific_matcher
+
+# Disabled Rules (with rationale)
+disabled_rules:
+  - todo # We use TODO for tracking work items
+  - line_length # Handled by type_body_length and function_body_length
+  - type_name # Can be overly restrictive for protocol names
+
+# Custom Rules Configuration
+file_length:
+  warning: 500
+  error: 1000
+  ignore_comment_only_lines: true
+
+type_body_length:
+  warning: 300
+  error: 500
+
+function_body_length:
+  warning: 50
+  error: 100
+
+function_parameter_count:
+  warning: 5
+  error: 8
+
+large_tuple:
+  warning: 3
+  error: 4
+
+cyclomatic_complexity:
+  warning: 10
+  error: 20
+  ignores_case_statements: true
+
+nesting:
+  type_level:
+    warning: 2
+    error: 3
+  statement_level:
+    warning: 5
+    error: 10
+
+identifier_name:
+  min_length:
+    warning: 2
+    error: 1
+  max_length:
+    warning: 50
+    error: 60
+  excluded:
+    - i
+    - j
+    - k
+    - id
+    - x
+    - y
+    - z
+    - hp
+    - bs # Ballistic Skill
+    - ws # Weapon Skill
+    - ap # Armor Penetration
+    - fp # Feel No Pain (FNP)
+
+type_name:
+  min_length:
+    warning: 3
+    error: 2
+  max_length:
+    warning: 50
+    error: 60
+  excluded:
+    - ID
+    - AP # Armor Penetration
+    - BS # Ballistic Skill
+    - WS # Weapon Skill
+    - HP # Hit Points
+
+# Force unwrapping - only allow in tests
+force_unwrapping:
+  severity: error
+
+# Implicitly unwrapped optionals
+implicitly_unwrapped_optional:
+  mode: all
+  severity: warning
+
+# File header template
+file_header:
+  required_pattern: |
+                    \/\/
+                    \/\/  .*?\.swift
+                    \/\/  MobileDiceRoller
+                    \/\/
+                    \/\/  Created on \d{4}-\d{2}-\d{2}\.
+                    \/\/
+
+# Trailing whitespace
+trailing_whitespace:
+  ignores_empty_lines: true
+  ignores_comments: false
+
+# Trailing comma
+trailing_comma:
+  mandatory_comma: true
+
+# Vertical whitespace
+vertical_whitespace:
+  max_empty_lines: 2
+
+# Line length (informational only)
+line_length:
+  warning: 120
+  error: 150
+  ignores_comments: true
+  ignores_urls: true
+  ignores_function_declarations: true
+  ignores_interpolated_strings: true
+
+# Custom Rules
+custom_rules:
+  # Avoid print statements
+  no_print:
+    name: "No Print Statements"
+    regex: '^\s*print\('
+    match_kinds:
+      - identifier
+    message: "Use proper logging instead of print()"
+    severity: warning
+
+  # Require MARK comments for organization
+  marks_required:
+    name: "MARK Comments Required"
+    regex: '(class|struct|enum|protocol|extension)\s+\w+.*\{(?!\s*\/\/\s*MARK:)'
+    message: "Use // MARK: to organize your code"
+    severity: warning
+
+  # No force casting
+  no_force_cast:
+    name: "No Force Casting"
+    regex: 'as!'
+    message: "Use conditional casting (as?) instead of force casting (as!)"
+    severity: error
+
+  # Prefer self for static members
+  explicit_static_self:
+    name: "Explicit Static Self"
+    regex: '(?<!Self\.)\b(makeDefault|shared|default)\b'
+    message: "Use Self. for static members"
+    severity: warning
+
+# Reporter
+reporter: "xcode"
+
+# Strict mode
+strict: true
+
+# Custom excluded directories
+excluded:
+  - .build
+  - .swiftpm
+  - DerivedData
+  - Pods
+  - vendor
+  - fastlane
+  - scripts
+
+# Only run specific rules in CI
+only_rules: []
