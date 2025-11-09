@@ -42,33 +42,31 @@ final class DependencyContainer {
         AbilityProcessor()
     }()
 
-    // MARK: - Database & Repositories
-
-    /// Database service (lazy singleton)
-    private(set) lazy var databaseService: DatabaseServiceProtocol = {
-        // Will be implemented in Phase 6
-        // For now, return a stub
-        DatabaseServiceStub()
-    }()
-
-    /// Weapon repository (lazy singleton)
-    private(set) lazy var weaponRepository: WeaponRepositoryProtocol = {
-        // Will be implemented in Phase 6
-        WeaponRepositoryStub()
-    }()
-
-    /// Defender repository (lazy singleton)
-    private(set) lazy var defenderRepository: DefenderRepositoryProtocol = {
-        // Will be implemented in Phase 6
-        DefenderRepositoryStub()
-    }()
-
     // MARK: - Security
 
     /// Keychain manager for secure storage (lazy singleton)
     private(set) lazy var keychainManager: KeychainManaging = {
-        // Will be implemented in Phase 6
-        KeychainManagerStub()
+        KeychainManager(service: "com.mobilediceroller.app")
+    }()
+
+    // MARK: - Database & Repositories
+
+    /// Database service (lazy singleton)
+    private(set) lazy var databaseService: DatabaseService = {
+        DatabaseService(
+            keychainManager: keychainManager,
+            configuration: DatabaseConfiguration()
+        )
+    }()
+
+    /// Weapon repository (lazy singleton)
+    private(set) lazy var weaponRepository: WeaponRepositoryProtocol = {
+        WeaponRepository(database: databaseService)
+    }()
+
+    /// Defender repository (lazy singleton)
+    private(set) lazy var defenderRepository: DefenderRepositoryProtocol = {
+        DefenderRepository(database: databaseService)
     }()
 
     // MARK: - Initialization
@@ -83,9 +81,8 @@ final class DependencyContainer {
     ///
     /// This should be called during app launch to ensure the database
     /// is ready before any UI is displayed.
-    func initializeDatabase() async {
-        // Will be implemented in Phase 6
-        // For now, this is a no-op
+    func initializeDatabase() async throws {
+        try await databaseService.initialize()
     }
 
     // MARK: - ViewModel Factories
@@ -142,59 +139,7 @@ final class DependencyContainer {
     }
 }
 
-// MARK: - Temporary Stub Implementations
-
-// These stubs will be replaced with real implementations in later phases
-
-/// Temporary stub for database service
-private struct DatabaseServiceStub: DatabaseServiceProtocol {
-    func initialize() async throws {}
-}
-
-/// Temporary stub for weapon repository
-private struct WeaponRepositoryStub: WeaponRepositoryProtocol {
-    func fetchAll() async throws -> [Weapon] { [] }
-    func save(_ weapon: Weapon) async throws {}
-    func delete(_ weapon: Weapon) async throws {}
-}
-
-/// Temporary stub for defender repository
-private struct DefenderRepositoryStub: DefenderRepositoryProtocol {
-    func fetchAll() async throws -> [Defender] { [] }
-    func save(_ defender: Defender) async throws {}
-    func delete(_ defender: Defender) async throws {}
-}
-
-/// Temporary stub for keychain manager
-private struct KeychainManagerStub: KeychainManaging {
-    func save(key: String, data: Data) throws {}
-    func retrieve(key: String) throws -> Data? { nil }
-    func delete(key: String) throws {}
-}
-
-// MARK: - Protocol Definitions (Temporary Forward Declarations)
-
-// These protocols will be properly defined in their respective phases
-// For now, we provide minimal definitions to avoid compilation errors
-
-protocol DatabaseServiceProtocol {
-    func initialize() async throws
-}
-protocol WeaponRepositoryProtocol {
-    func fetchAll() async throws -> [Weapon]
-    func save(_ weapon: Weapon) async throws
-    func delete(_ weapon: Weapon) async throws
-}
-protocol DefenderRepositoryProtocol {
-    func fetchAll() async throws -> [Defender]
-    func save(_ defender: Defender) async throws
-    func delete(_ defender: Defender) async throws
-}
-protocol KeychainManaging {
-    func save(key: String, data: Data) throws
-    func retrieve(key: String) throws -> Data?
-    func delete(key: String) throws
-}
+// MARK: - Temporary ViewModel Stubs (Phase 7)
 
 // Temporary ViewModel stubs
 struct CalculatorViewModel {

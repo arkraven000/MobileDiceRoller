@@ -38,6 +38,9 @@ import Foundation
 public struct Weapon: Equatable, Codable, Hashable {
     // MARK: - Properties
 
+    /// Unique identifier for database persistence
+    public let id: String
+
     /// The name of the weapon (e.g., "Bolt Rifle", "Plasma Gun")
     public let name: String
 
@@ -62,6 +65,12 @@ public struct Weapon: Equatable, Codable, Hashable {
     /// Maximum range in inches (nil for melee weapons)
     public let range: Int?
 
+    /// Timestamp when the weapon was created in the database
+    public let createdAt: Date
+
+    /// Timestamp when the weapon was last updated in the database
+    public let updatedAt: Date
+
     // MARK: - Computed Properties
 
     /// Returns true if this is a ranged weapon
@@ -83,6 +92,7 @@ public struct Weapon: Equatable, Codable, Hashable {
     /// Creates a new weapon with the specified characteristics
     ///
     /// - Parameters:
+    ///   - id: Unique identifier (auto-generated if not provided)
     ///   - name: The weapon's name
     ///   - attacks: Number of attacks
     ///   - skill: Ballistic Skill or Weapon Skill (2-6)
@@ -91,7 +101,10 @@ public struct Weapon: Equatable, Codable, Hashable {
     ///   - damage: Damage characteristic (e.g., "1", "D6")
     ///   - abilities: Special weapon abilities
     ///   - range: Maximum range in inches (nil for melee)
+    ///   - createdAt: Creation timestamp (auto-generated if not provided)
+    ///   - updatedAt: Last update timestamp (auto-generated if not provided)
     public init(
+        id: String = UUID().uuidString,
         name: String,
         attacks: Int,
         skill: Int,
@@ -99,8 +112,11 @@ public struct Weapon: Equatable, Codable, Hashable {
         armorPenetration: Int,
         damage: String,
         abilities: [WeaponAbility] = [],
-        range: Int? = nil
+        range: Int? = nil,
+        createdAt: Date = Date(),
+        updatedAt: Date = Date()
     ) {
+        self.id = id
         self.name = name
         self.attacks = attacks
         self.skill = skill
@@ -109,6 +125,8 @@ public struct Weapon: Equatable, Codable, Hashable {
         self.damage = damage
         self.abilities = abilities
         self.range = range
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
     }
 }
 
