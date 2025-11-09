@@ -177,9 +177,6 @@ private struct KeychainManagerStub: KeychainManaging {
 // These protocols will be properly defined in their respective phases
 // For now, we provide minimal definitions to avoid compilation errors
 
-protocol MonteCarloSimulating {}
-protocol StatisticalAnalyzing {}
-protocol AbilityProcessing {}
 protocol DatabaseServiceProtocol {
     func initialize() async throws
 }
@@ -198,16 +195,6 @@ protocol KeychainManaging {
     func retrieve(key: String) throws -> Data?
     func delete(key: String) throws
 }
-
-// Temporary stub implementations
-struct MonteCarloSimulator: MonteCarloSimulating {
-    init(randomNumberGenerator: RandomNumberGenerator) {}
-}
-struct SecureRandomNumberGenerator: RandomNumberGenerator {
-    func next() -> UInt64 { 0 }
-}
-struct StatisticalAnalyzer: StatisticalAnalyzing {}
-struct AbilityProcessor: AbilityProcessing {}
 
 // Temporary ViewModel stubs
 struct CalculatorViewModel {
