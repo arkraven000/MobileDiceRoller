@@ -37,6 +37,9 @@ import Foundation
 public struct Defender: Equatable, Codable, Hashable {
     // MARK: - Properties
 
+    /// Unique identifier for database persistence
+    public let id: String
+
     /// The name of the unit (e.g., "Space Marine", "Terminator")
     public let name: String
 
@@ -63,6 +66,12 @@ public struct Defender: Equatable, Codable, Hashable {
 
     /// Number of models in the unit
     public let modelCount: Int
+
+    /// Timestamp when the defender was created in the database
+    public let createdAt: Date
+
+    /// Timestamp when the defender was last updated in the database
+    public let updatedAt: Date
 
     // MARK: - Computed Properties
 
@@ -100,6 +109,7 @@ public struct Defender: Equatable, Codable, Hashable {
     /// Creates a new defender with the specified characteristics
     ///
     /// - Parameters:
+    ///   - id: Unique identifier (auto-generated if not provided)
     ///   - name: The unit's name
     ///   - toughness: Toughness characteristic
     ///   - save: Armor Save characteristic (2-6)
@@ -107,15 +117,21 @@ public struct Defender: Equatable, Codable, Hashable {
     ///   - feelNoPain: Optional Feel No Pain roll (2-6)
     ///   - wounds: Wounds per model
     ///   - modelCount: Number of models in the unit
+    ///   - createdAt: Creation timestamp (auto-generated if not provided)
+    ///   - updatedAt: Last update timestamp (auto-generated if not provided)
     public init(
+        id: String = UUID().uuidString,
         name: String,
         toughness: Int,
         save: Int,
         invulnerableSave: Int? = nil,
         feelNoPain: Int? = nil,
         wounds: Int,
-        modelCount: Int
+        modelCount: Int,
+        createdAt: Date = Date(),
+        updatedAt: Date = Date()
     ) {
+        self.id = id
         self.name = name
         self.toughness = toughness
         self.save = save
@@ -123,6 +139,8 @@ public struct Defender: Equatable, Codable, Hashable {
         self.feelNoPain = feelNoPain
         self.wounds = wounds
         self.modelCount = modelCount
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
     }
 }
 
