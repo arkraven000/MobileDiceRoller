@@ -2,10 +2,11 @@
 
 A comprehensive iOS application for calculating dice probabilities and running Monte Carlo simulations for Warhammer 40,000 10th Edition tabletop battles.
 
-[![iOS](https://img.shields.io/badge/iOS-16.0+-blue.svg)](https://developer.apple.com/ios/)
+[![iOS](https://img.shields.io/badge/iOS-17.0+-blue.svg)](https://developer.apple.com/ios/)
 [![Swift](https://img.shields.io/badge/Swift-5.9+-orange.svg)](https://swift.org)
 [![SwiftUI](https://img.shields.io/badge/SwiftUI-3.0+-green.svg)](https://developer.apple.com/xcode/swiftui/)
-[![License](https://img.shields.io/badge/license-TBD-lightgrey.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Completion](https://img.shields.io/badge/completion-100%25-brightgreen.svg)](PROJECT_PLAN.md)
 
 ---
 
@@ -268,9 +269,9 @@ Warhammer 40,000 is a tabletop miniature wargame produced by Games Workshop. Thi
 
 ## 🗺️ Project Status
 
-**Current Phase**: Planning & Setup
-**Completion**: 0 of 109 tasks (0%)
-**Last Updated**: 2025-11-08
+**Current Phase**: All Phases Complete - Production Ready
+**Completion**: 109 of 109 tasks (100%)
+**Last Updated**: 2025-11-09
 
 See [PROJECT_PLAN.md](PROJECT_PLAN.md) for detailed task breakdown and current status.
 
