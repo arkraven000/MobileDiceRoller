@@ -139,15 +139,3 @@ final class DependencyContainer {
     }
 }
 
-// MARK: - Temporary ViewModel Stubs (Phase 7)
-
-// Temporary ViewModel stubs
-struct CalculatorViewModel {
-    init(probabilityEngine: ProbabilityCalculating, abilityProcessor: AbilityProcessing) {}
-}
-struct SimulationViewModel {
-    init(simulator: MonteCarloSimulating, analyzer: StatisticalAnalyzing) {}
-}
-struct LibraryViewModel {
-    init(weaponRepository: WeaponRepositoryProtocol, defenderRepository: DefenderRepositoryProtocol) {}
-}
